@@ -47,7 +47,7 @@ const PhotosCarousel = ({ images, onClose }) => {
                                     <img key={index} src={img.url} alt={`product-${index}`}/>
                                 ))
                             ) : (
-                                <p>Нет изображений</p>
+                                <p>No images</p>
                             )}
                         <button className={styles.arrow_right} onClick={rightSlideChange}></button>
                     

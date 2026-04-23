@@ -14,8 +14,8 @@ const AuthUserForm = () => {
     useEffect(() => {
       if (loading) {
         const timer = setTimeout(() => {
-          navigate('/'); // редирект на главную
-        }, 3000); //3 секунды
+          navigate('/'); // Redirect to the home page.
+        }, 3000); // 3 seconds.
         
         return () => clearTimeout(timer);
       }
@@ -39,20 +39,20 @@ const AuthUserForm = () => {
       const data = await response.json();
       if (!response.ok) {
         if (data.message && data.message.includes("Invalid email or password")) {
-          setErrorMessage("Введен неправильный пароль или email.");
+          setErrorMessage("Incorrect email or password.");
         } else {
-          setErrorMessage(data.message || "Ошибка при регистрации.");
+          setErrorMessage(data.message || "Registration failed.");
         }
         return;
       }
-      localStorage.setItem('token', data.token); // сохраняем токен
+      localStorage.setItem('token', data.token); // Save token.
       setLoading(true);
       const toastEl = document.getElementById('successToast');
       const toast = new Toast(toastEl);
       toast.show();
     })
       .catch(error => {
-        console.error('Ошибка получения токена:', error);
+        console.error('Failed to get token:', error);
       });
   }
 
@@ -64,7 +64,7 @@ const AuthUserForm = () => {
     ) : (<form className='userForm' onSubmit={(e) => authUser(e)} style={{margin: "100px auto"}}>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
-              Введите электронную почту
+              Enter your email
             </label>
             <input
               type="email"
@@ -78,7 +78,7 @@ const AuthUserForm = () => {
 
           <div className="mb-3">
             <label htmlFor="exampleInputPassword1" className="form-label">
-              Введите пароль
+              Enter your password
             </label>
             <input
               type="password"
@@ -95,7 +95,7 @@ const AuthUserForm = () => {
         )}
 
         <button type="submit" className="btn btn-primary">
-          Войти
+          Sign in
         </button>
 
       </form>
@@ -104,9 +104,9 @@ const AuthUserForm = () => {
       <div id="successToast" className="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div className="d-flex">
           <div className="toast-body">
-            Пользователь успешно авторизован!
+            User signed in successfully.
           </div>
-          <button type="button" className="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+          <button type="button" className="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
       </div>
     </div>

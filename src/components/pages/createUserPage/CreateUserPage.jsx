@@ -12,7 +12,7 @@ const CreateUserPage = () => {
   return (
     <div className='content-wrapper d-flex flex-column min-vh-100'>
       <Navbar></Navbar>
-      <VisualHeader text={"Добро пожаловать!"}></VisualHeader>
+      <VisualHeader text={"Welcome!"}></VisualHeader>
 
       {!token ? (
         <CreateUserTokenForm onTokenCreated={setToken} />

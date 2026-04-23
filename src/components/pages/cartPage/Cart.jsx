@@ -12,7 +12,7 @@ const Cart = () => {
     const deleteCartProduct = async (id_item) => {
       console.log("item deleted: ", id_item);
       try {
-        //Получаю содержимое корзины
+        // Load cart contents.
         await fetch(`${API_URL}/store/carts/${TEST_CART_ID}/line-items/${id_item}`, {
           method: 'DELETE',
           headers: { "x-publishable-api-key": API_KEY },
@@ -20,7 +20,7 @@ const Cart = () => {
         window.dispatchEvent(new Event("cartUpdated")); 
         window.dispatchEvent(new Event("cartAmountUpdated"));
       } catch (err) {
-        console.error("Ошибка при загрузке продукта:", err);
+        console.error("Failed to load product:", err);
       }
     };
     //update item function
@@ -39,7 +39,7 @@ const Cart = () => {
         window.dispatchEvent(new Event("cartAmountUpdated"));
         window.dispatchEvent(new Event("cartUpdated")); 
       } catch (err) {
-        console.error("Ошибка при загрузке продукта:", err);
+        console.error("Failed to load product:", err);
       }
     };
 
@@ -58,7 +58,7 @@ const Cart = () => {
         window.dispatchEvent(new Event("cartUpdated")); 
         window.dispatchEvent(new Event("cartAmountUpdated"));
       } catch (err) {
-        console.error("Ошибка при загрузке продукта:", err);
+        console.error("Failed to load product:", err);
       }
     };
     
@@ -67,7 +67,7 @@ const Cart = () => {
       useEffect(() => {
         const loadCartProducts = async () => {
           try {
-            //Получаю содержимое корзины
+            // Load cart contents.
             const cartProductsJSON = await fetch(`${API_URL}/store/carts/${TEST_CART_ID}`, {
               headers: { "x-publishable-api-key": API_KEY },
             });
@@ -75,17 +75,17 @@ const Cart = () => {
             const cartProducts = data.cart.items;
             setCartItems(cartProducts);
             setCartData(data.cart);
-            console.log("данные cart обновились");
-            console.log(cartItems); //почему он ничего не выводит?
+            console.log("Cart data updated");
+            console.log(cartItems); // State updates asynchronously, so this may log the previous value.
           } catch (err) {
-            console.error("Ошибка при загрузке продукта:", err);
+            console.error("Failed to load product:", err);
           }
         };
     
         loadCartProducts();
 
 
-        //моментальное обновление содержимого корзины без необходимости перезагружать страницу
+        // Update cart contents without reloading the page.
         const handleCartDataUpdate = () => {
           loadCartProducts();
         };
@@ -93,7 +93,7 @@ const Cart = () => {
         return () => {
             window.removeEventListener("cartUpdated", handleCartDataUpdate);
         };
-        //моментальное обновление содержимого корзины
+        // Update cart contents.
       }, 
       []);
 
@@ -104,12 +104,12 @@ const Cart = () => {
     <div className='content-wrapper d-flex flex-column min-vh-100'>
     <Navbar></Navbar>
     <div className={`container py-5 flex-grow-1 ${styles.cart_container}`}>
-        <h2 className="mb-4">Корзина</h2>
+        <h2 className="mb-4">Cart</h2>
 
         {cartItems.map((cartItem) => (
         <div key={cartItem.id} className={`row border-bottom py-3 align-items-center ${styles.cart_item}`}>
             <div className="col-md-2">
-            <img src={cartItem.thumbnail} className={`img-fluid ${styles.product_image}`} alt="Товар" />
+            <img src={cartItem.thumbnail} className={`img-fluid ${styles.product_image}`} alt="Product" />
             </div>
             <div className="col-md-4">
             <a href={`/products/${cartItem.product.id}`}>
@@ -135,20 +135,20 @@ const Cart = () => {
 
 
             <div className={`col-md-2 ${styles.money_block}`}>
-            <strong>{(cartItem.unit_price / 100).toFixed(2)} ₽</strong>
+            <strong>{(cartItem.unit_price / 100).toFixed(2)} RUB</strong>
             </div>
             <div className={`col-md-1 ${styles.delete_block}`}>
-            <button className="btn btn-danger btn-sm" onClick={() => deleteCartProduct(cartItem.id)}>Удалить</button>
+            <button className="btn btn-danger btn-sm" onClick={() => deleteCartProduct(cartItem.id)}>Remove</button>
             </div>
         </div>
       ))}
 
 
         <div className="text-end mt-4">
-            <h6>Итого без учёта налогов: {(cartData.subtotal / 100).toFixed(2)} ₽</h6>
-            <p>Налог 20%: {(cartData.tax_total / 100).toFixed(2)} ₽</p>  
-            <h2>Итого: {(cartData.total / 100).toFixed(2)} ₽</h2>
-            <button className="btn btn-success">Оформить заказ</button>
+            <h6>Subtotal before taxes: {(cartData.subtotal / 100).toFixed(2)} RUB</h6>
+            <p>Tax 20%: {(cartData.tax_total / 100).toFixed(2)} RUB</p>  
+            <h2>Total: {(cartData.total / 100).toFixed(2)} RUB</h2>
+            <button className="btn btn-success">Checkout</button>
         </div>
     </div>
 

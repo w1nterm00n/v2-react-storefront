@@ -5,18 +5,18 @@ const MainPageSlider = () => {
   
   let productsArray = [
     {
-      name : "Зелёный чай жасмин",
-      description: "Насыщенный вкус и аромат жасмина для истинных ценителей зелёного чая.",
+      name : "Jasmine Green Tea",
+      description: "A rich taste and jasmine aroma for true green tea lovers.",
       image: "/src/assets/img/mainPage/Banner1img1.png",
     },
     {
-      name : "Малиновый красный чай",
-      description: "Яркий ягодный вкус и бодрящая энергия малины в каждой чашке.",
+      name : "Raspberry Red Tea",
+      description: "Bright berry flavor and uplifting raspberry energy in every cup.",
       image: "/src/assets/img/mainPage/Banner1img2.png"
     },
     {
-      name : "Золотой чай c куркумой",
-      description: "Тёплый пряный аромат куркумы с нотками лимона — для уюта и здоровья.",
+      name : "Golden Turmeric Tea",
+      description: "A warm, spicy turmeric aroma with notes of lemon for comfort and wellness.",
       image: "/src/assets/img/mainPage/Banner1img3.png"
     }
   ]
@@ -59,7 +59,7 @@ const MainPageSlider = () => {
           <img className={styles.leaf_left} src="/src/assets/img/mainPage/leaf_left.svg" alt="leaf" />
           <h2> {actualProduct.name} </h2>
           <p> {actualProduct.description} </p>
-          <button><a href="/products">СМОТРЕТЬ ТОВАРЫ</a></button>
+          <button><a href="/products">VIEW PRODUCTS</a></button>
         </div>
       </div>
     </article>

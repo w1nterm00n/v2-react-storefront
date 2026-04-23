@@ -16,8 +16,8 @@ const CreateUserForm = ({ token }) => {
   useEffect(() => {
     if (loading) {
       const timer = setTimeout(() => {
-        navigate('/'); // редирект на главную
-      }, 3000); //3 секунды
+        navigate('/'); // Redirect to the home page.
+      }, 3000); // 3 seconds.
       
       return () => clearTimeout(timer);
     }
@@ -43,18 +43,18 @@ const CreateUserForm = ({ token }) => {
       });
   
       if (!response.ok) {
-        throw new Error(`Ошибка запроса: ${response.statusText}`);
+        throw new Error(`Request failed: ${response.statusText}`);
       }
   
       const data = await response.json();
-      console.log("Пользователь создан:", data);
+      console.log("User created:", data);
       setLoading(true);
       const toastEl = document.getElementById('successToast');
       const toast = new Toast(toastEl);
       toast.show();
 
     } catch (error) {
-      console.error("Ошибка создания пользователя:", error);
+      console.error("Failed to create user:", error);
     }
   };
   
@@ -66,7 +66,7 @@ const CreateUserForm = ({ token }) => {
     ) : (<form className='userForm' onSubmit={(e) => createUser(e, token)} style={{margin: "100px auto"}}>
           <div className="mb-3">
             <label htmlFor="exampleInputname" className="form-label">
-              Введите Ваше имя
+              Enter your first name
             </label>
             <input
               type="text"
@@ -80,7 +80,7 @@ const CreateUserForm = ({ token }) => {
           
           <div className="mb-3">
             <label htmlFor="exampleInputSurname" className="form-label">
-              Введите Вашу фамилию
+              Enter your last name
             </label>
             <input
               type="text"
@@ -94,7 +94,7 @@ const CreateUserForm = ({ token }) => {
 
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
-              Введите номер телефона
+              Enter your phone number
             </label>
             <input
               type="tel"
@@ -108,7 +108,7 @@ const CreateUserForm = ({ token }) => {
 
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
-              Введите электронную почту
+              Enter your email
             </label>
             <input
               type="email"
@@ -118,11 +118,11 @@ const CreateUserForm = ({ token }) => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <div id="emailHelp" class="form-text">Почта должна совпадать с той что вы ввели</div>
+            <div id="emailHelp" class="form-text">The email must match the one you entered earlier.</div>
           </div>
 
           <button type="submit" className="btn btn-primary">
-            Продложить
+            Continue
           </button>
 
       </form>
@@ -132,9 +132,9 @@ const CreateUserForm = ({ token }) => {
       <div id="successToast" className="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div className="d-flex">
           <div className="toast-body">
-            Пользователь успешно зарегистрирован!
+            User registered successfully.
           </div>
-          <button type="button" className="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+          <button type="button" className="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
       </div>
     </div>

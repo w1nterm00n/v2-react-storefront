@@ -25,9 +25,9 @@ const CreateUserTokenForm = ({ onTokenCreated }) => {
 
       if (!response.ok) {
         if (data.message && data.message.includes("Identity with email already exists")) {
-          setErrorMessage("Этот email уже занят.");
+          setErrorMessage("This email is already taken.");
         } else {
-          setErrorMessage(data.message || "Ошибка при регистрации.");
+          setErrorMessage(data.message || "Registration failed.");
         }
         return;
       }
@@ -35,7 +35,7 @@ const CreateUserTokenForm = ({ onTokenCreated }) => {
       onTokenCreated(data.token);
     } catch (error) {
       console.error("Error:", error);
-      setErrorMessage("Произошла ошибка при подключении к серверу.");
+      setErrorMessage("A server connection error occurred.");
     }
   }
 
@@ -46,7 +46,7 @@ const CreateUserTokenForm = ({ onTokenCreated }) => {
         <form className='userForm' onSubmit={(e) => createToken(e, email, password)} style={{margin: "100px auto"}}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Введите электронную почту
+            Enter your email
           </label>
           <input
             type="email"
@@ -60,7 +60,7 @@ const CreateUserTokenForm = ({ onTokenCreated }) => {
 
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
-            Создайте пароль
+            Create a password
           </label>
           <input
             type="password"
@@ -78,7 +78,7 @@ const CreateUserTokenForm = ({ onTokenCreated }) => {
         )}
 
         <button type="submit" className="btn btn-primary">
-          Продложить
+          Continue
         </button>
 
       </form>

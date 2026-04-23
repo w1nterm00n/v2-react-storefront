@@ -22,7 +22,7 @@ const ContactPage = () => {
     </div>
 
     <div className={styles.gallery_wrapper}>
-        <h4 className={styles.gallery_title}>Чай в деталях</h4>
+        <h4 className={styles.gallery_title}>Tea in Detail</h4>
         <div className={styles.gallery_grid_container}>
             <div className={`${styles.grid_child} ${styles.child1}`}>
                 <img src="/src/assets/img/contactsPage/Img1.jpg" alt="aestatic tea image" />
@@ -48,14 +48,14 @@ const ContactPage = () => {
 
     <div className={styles.feedback_form_wrapper}>
         <img className={styles.leafs_img} src="/src/assets/img/contactsPage/leafs.svg" alt="leafs image" />
-        <h4 className={styles.feedback_title}>Остаёмся на связи</h4>
-        <p className={styles.feedback_text}>Подпишитесь на рассылку и будьте в курсе новинок. Мы расскажем о свежих поступлениях и специальных предложениях.</p>
+        <h4 className={styles.feedback_title}>Stay in Touch</h4>
+        <p className={styles.feedback_text}>Subscribe to our newsletter and stay updated on new arrivals. We will share fresh releases and special offers.</p>
         <div className={styles.feedback_form}>
             <form style={{ maxWidth: 700 }}>
                 <input
                 type="email"
                 className="form-control border-0"
-                placeholder="Ваша почта"
+                placeholder="Your email"
                 aria-label="Email"
                 required=""
                 />
@@ -63,7 +63,7 @@ const ContactPage = () => {
                 style={{ backgroundColor: "#13472D" }}
                 type="submit"
                 >
-                ПОДПИСАТЬСЯ
+                SUBSCRIBE
                 </button>
             </form>
         </div>

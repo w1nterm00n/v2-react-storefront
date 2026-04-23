@@ -14,7 +14,7 @@ const ProductCard = (product) => {
                 <h5 className={styles.card_title}>{product.product.title}</h5>
                 <ProductPrice productId={product.product.id} regionId={REGION_ID}></ProductPrice>
                 <a href={`/products/${product.product.id}`} className={styles.btn_default}>
-                    ПЕРЕЙТИ К ТОВАРУ
+                    VIEW PRODUCT
                 </a>
             </div>
         </div>

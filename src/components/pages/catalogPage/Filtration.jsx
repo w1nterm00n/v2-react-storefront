@@ -11,11 +11,11 @@ const Filtration = ({minPrice, maxPrice}) => {
     const navigate = useNavigate();
     const [value, setValue] = useState(0);  //slider
 
-    // запрос чтобы получить категории:
+    // Request categories.
       useEffect(() => {
         const loadCategories = async () => {
           try {
-            // 3. Получаем все категории
+            // Load all categories.
             const categoriesRes = await fetch(`${API_URL}/store/product-categories`, {
               headers: { "x-publishable-api-key": API_KEY },
             });
@@ -30,17 +30,17 @@ const Filtration = ({minPrice, maxPrice}) => {
             setCategories(parentCategories);
 
           } catch (err) {
-            console.error("Ошибка при загрузке продуктов:", err);
+            console.error("Failed to load products:", err);
           } 
         };
         loadCategories();
       }, []);
-    // запрос чтобы получить категории
+    // Request categories.
 
-    //функция получающая товары нужной категории:
+    // Load products from the selected category.
     async function loadCategory (category) {
         try {
-            //Получаю товары нужной категории
+            // Load products from the selected category.
             const productsRes = await fetch(`${API_URL}/store/products?category_id=${category.id}`, {
             headers: { "x-publishable-api-key": API_KEY },
             });
@@ -48,16 +48,16 @@ const Filtration = ({minPrice, maxPrice}) => {
             const results = data.products || [];
             navigate('/products/search', { state: { results, category} });
         } catch (err) {
-            console.error("Ошибка при загрузке продуктов:", err);
+            console.error("Failed to load products:", err);
         }
     };
-    //функция получающая товары нужной категории
+    // Load products from the selected category.
 
 
-    //при нажатии "Применить" - перемещающая на SearchedProducts
+    // Move to SearchedProducts when Apply is clicked.
     async function findProductsByPrice() {
       try {
-        //Получаем все товары
+        // Load all products.
         const productsRes = await fetch(`${API_URL}/store/products?region_id=${REGION_ID}`, {
           headers: { "x-publishable-api-key": API_KEY },
         });
@@ -68,22 +68,22 @@ const Filtration = ({minPrice, maxPrice}) => {
           p.price_rub = Number((p.price_rub / 100).toFixed(2));
         });
 
-        //Фильтруем по baseProducts
+        // Filter baseProducts.
         const results = baseProducts.filter(p => p.price_rub <= value);
         navigate('/products/search', { state: { results} });
       } catch (err) {
-        console.error("Ошибка при загрузке продуктов:", err);
+        console.error("Failed to load products:", err);
       }
     }
     
-    //при нажатии "Применить" - перемещающая на SearchedProducts
+    // Move to SearchedProducts when Apply is clicked.
 
     return (
 
     <div className={styles.filtration_wrapper}>
         <div className={styles.filtration}>
             <div className={styles.price_filter}>
-                <h5>Фильтрация по цене</h5>
+                <h5>Filter by Price</h5>
                 <div className={styles.filtration_line}>
                     <div className={styles.vertical_line}></div>
                     <Slider
@@ -109,7 +109,7 @@ const Filtration = ({minPrice, maxPrice}) => {
           
                 <div className={styles.filter_apply_section}>
                     <p>
-                    Цена: {Math.round(minPrice)}₽ - {value === 0 ? Math.round(maxPrice) : value}₽
+                    Price: {Math.round(minPrice)} RUB - {value === 0 ? Math.round(maxPrice) : value} RUB
                     </p>
                     <a href="#!"
                       onClick={e => {
@@ -117,13 +117,13 @@ const Filtration = ({minPrice, maxPrice}) => {
                         findProductsByPrice();
                       }}
                      className={styles.filter_apply_link}>
-                    <i>Применить</i>
+                    <i>Apply</i>
                     </a>
                 </div>
             </div>
             
             <div className={styles.category_filter}>
-                <h5>Категории</h5>
+                <h5>Categories</h5>
                 {categories.map((category) => (
                 <div className={styles.filtration_categories} key={category.id}>
                     <p>{category.name}</p>

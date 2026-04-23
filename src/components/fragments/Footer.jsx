@@ -10,10 +10,10 @@ return (
   <footer >
     <div className={styles.footer_wrapper}>
         <div className={styles.text_container_block}>
-            <h5>Связаться с Нами</h5>
+            <h5>Contact Us</h5>
             <div className={styles.text_flex}>
               <p>hello@chaidom.ru</p>
-              <p>Архангельск, ул. Воскресенская 85</p>
+              <p>Arkhangelsk, Voskresenskaya St. 85</p>
               <p>+7 (999) 123-45-67</p>
             </div>
         </div>
@@ -22,18 +22,18 @@ return (
 
         <div className={styles.logo_block}>
             <a href="/" className={styles.footer_logo}>
-              <img src="/src/assets/img/fragments/logo_white.svg" alt="логотип"/>
+              <img src="/src/assets/img/fragments/logo_white.svg" alt="logo"/>
             </a>
         </div>
 
         <div className={styles.dividing_line}></div>
 
         <div className={styles.text_container_block}>
-            <h5>Время Работы</h5>
+            <h5>Opening Hours</h5>
             <div className={styles.text_flex}>
-              <p>Понедельник/Пятница 10:00-21:00</p>
-              <p>Суббота 12:00-20:00</p>
-              <p>В воскресенье закрыто</p>
+              <p>Monday/Friday 10:00-21:00</p>
+              <p>Saturday 12:00-20:00</p>
+              <p>Closed on Sunday</p>
             </div>
         </div>
     </div>

@@ -8,19 +8,19 @@ const CustomersReview = () => {
     
     let reviewsArray = [
         {
-            name: "Даниил К.",
+            name: "Daniel K.",
             pic: "/src/assets/img/mainPage/person_pic_2.png",
-            text: "Никогда не пил ничего подобного. Натуральный аромат и мягкий вкус делают каждую чашку настоящим удовольствием."
+            text: "I have never tasted anything like it. The natural aroma and smooth flavor make every cup a real pleasure."
         },
         {
-            name: "Ольга С.",
+            name: "Olga S.",
             pic: "/src/assets/img/mainPage/person_pic_1.svg",
-            text: "Этот органический чай просто великолепен! Вкус такой свежий, словно листья только что сорвали и заварили прямо в чашке."
+            text: "This organic tea is excellent. It tastes so fresh, as if the leaves were picked and brewed right in the cup."
         },
         {
-            name: "Елена М.",
+            name: "Elena M.",
             pic: "/src/assets/img/mainPage/person_pic_3.png",
-            text: "Чай превзошёл все ожидания! Такое ощущение, что пьёшь напиток, наполненный природой и заботой."
+            text: "The tea exceeded every expectation. It feels like drinking something filled with nature and care."
         }
     ];
 
@@ -54,7 +54,7 @@ const CustomersReview = () => {
   return (
     <div className={styles.customers_review_wrapper}>
         <img className={styles.left_leaf} src="/src/assets/img/mainPage/review_left_leaf.svg" alt="leaf" />
-        <h4 className={styles.customers_review_heading}>Отзывы наших покупателей</h4>
+        <h4 className={styles.customers_review_heading}>Customer Reviews</h4>
 
         <div className={styles.carousel_wrapper}>
             <div className={styles.stars_container}>
@@ -97,7 +97,7 @@ const CustomersReview = () => {
                     <motion.img
                         key={currentReview.pic}
                         src={currentReview.pic}
-                        alt="изображение человека"
+                        alt="customer portrait"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}

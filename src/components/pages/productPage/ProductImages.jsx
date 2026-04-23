@@ -33,7 +33,7 @@ const ProductImages = ({ images }) => {
 
           ))
         ) : (
-          <p>Нет изображений</p>
+          <p>No images</p>
         )}
 
         </div>

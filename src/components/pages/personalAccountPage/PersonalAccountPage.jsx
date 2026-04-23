@@ -38,13 +38,13 @@ const PersonalAccountPage = () => {
 
     <Navbar></Navbar>
 
-    <VisualHeader text={"Личный кабинет"}></VisualHeader>
+    <VisualHeader text={"Account"}></VisualHeader>
     <div className={`container py-5 ${styles.container}`} style={{margin: "100px auto"}}>
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card shadow-lg rounded-4">
             <div className={`card-body ${styles.form_wrapper}`}>
-              <h3 className="card-title mb-4 text-center">Данные пользователя</h3>
+              <h3 className="card-title mb-4 text-center">Customer Details</h3>
               <ul className="list-group list-group-flush">
               {personalInfo && personalInfo.first_name ? (
                 <>
@@ -52,24 +52,24 @@ const PersonalAccountPage = () => {
                   <strong>Email: </strong> {personalInfo.email}
                 </li>
                 <li className="list-group-item">
-                  <strong>Имя: </strong> {personalInfo.first_name}
+                  <strong>First name: </strong> {personalInfo.first_name}
                 </li>
                 <li className="list-group-item">
-                  <strong>Фамилия: </strong> {personalInfo.last_name}
+                  <strong>Last name: </strong> {personalInfo.last_name}
                 </li>
                 <li className="list-group-item">
-                  <strong>Дата регистрации: </strong> 
+                  <strong>Registration date: </strong> 
                   {personalInfo.created_at ? personalInfo.created_at.split("T")[0] : '–'}
                 </li>
                 <li className="list-group-item">
-                  <strong>Телефон: </strong> {personalInfo.phone}
+                  <strong>Phone: </strong> {personalInfo.phone}
                 </li>
                 </>
               ) : (
-                <p style={{textAlign: "center"}}>Сессия истекла, перезайдите в систему</p>
+                <p style={{textAlign: "center"}}>Your session has expired. Please sign in again.</p>
               )}
               </ul>
-              <button className={`btn btn-primary ${styles.quit_btn}`} style={{width: '50%', margin: '0 auto'}} onClick={logOut}>Выйти из аккаунта</button>
+              <button className={`btn btn-primary ${styles.quit_btn}`} style={{width: '50%', margin: '0 auto'}} onClick={logOut}>Sign out</button>
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ import {
   faPhoneAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
-// Добавляем нужные иконки в библиотеку один раз
+// Add the required icons to the library once.
 library.add(
   faCarSide,
   faUserShield,

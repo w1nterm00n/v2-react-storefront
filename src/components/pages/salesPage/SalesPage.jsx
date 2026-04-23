@@ -23,7 +23,7 @@ const SalesPage = () => {
             const results = data.products || [];
             setProducts(results);
           } catch (err) {
-            console.error("Ошибка при загрузке продуктов по акции:", err);
+            console.error("Failed to load sale products:", err);
           } finally {
             setLoading(false);
           }
@@ -34,7 +34,7 @@ const SalesPage = () => {
   const indexOfLastPost = currentPage * productsPerPage;
   const indexOfFirstPost = indexOfLastPost - productsPerPage;
   const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
-  //массив эл-тов, которые отобразятся на этой стр
+  // Products displayed on the current page.
 
   const handlePagination = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -45,7 +45,7 @@ const SalesPage = () => {
   return (
     <>
     <Navbar></Navbar>
-    <VisualHeader text={"Товары по акции"}></VisualHeader>
+    <VisualHeader text={"Sale Products"}></VisualHeader>
     <div style={{marginTop: '100px'}}>
 
       <div style={{margin: '0 auto', width: 'fit-content'}}>

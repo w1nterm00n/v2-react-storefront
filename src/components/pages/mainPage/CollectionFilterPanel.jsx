@@ -8,29 +8,29 @@ const CollectionFilterPanel = () => {
     const [chosenCollection, setChosenCollection] = useState(null);
     const [actualProducts, setActualProducts] = useState([]);
 
-    // запрос чтобы получить коллекции:
+    // Request collections.
     useEffect(() => {
         const loadCollections = async () => {
           try {
-            // 3. Получаем все коллекции
+            // Load all collections.
             const collectionsRes = await fetch(`${API_URL}/store/collections`, {
               headers: { "x-publishable-api-key": API_KEY },
             });
             const data = await collectionsRes.json();
             setCollections(data.collections);
             if (data.collections.length > 0) {
-                setChosenCollection(data.collections[0]); // устанавливаем первую коллекцию как выбранную
-                loadCollectionProducts(data.collections[0]); // подгружаем товары
+                setChosenCollection(data.collections[0]); // Use the first collection as the default.
+                loadCollectionProducts(data.collections[0]); // Load its products.
               }
           } catch (err) {
-            console.error("Ошибка при загрузке продуктов:", err);
+            console.error("Failed to load products:", err);
           } 
         };
         loadCollections();
       }, []);
-    // запрос чтобы получить коллекции
+    // Request collections.
 
-    //функция получающая товары нужной коллекции:
+    // Load products from the selected collection.
     async function loadCollectionProducts (collection) {
         try {
           const collectionProducts = await fetch(`${API_URL}/store/products?collection_id=${collection.id}`, {
@@ -40,13 +40,13 @@ const CollectionFilterPanel = () => {
           const results = data.products || [];
           setActualProducts(results.slice(0, 4));
         } catch (err) {
-          console.error("Ошибка при загрузке продуктов коллекции:", err);
+          console.error("Failed to load collection products:", err);
         } 
       };
-  //функция получающая товары нужной коллекции
+  // Load products from the selected collection.
 
 
-    // Обработчик клика по коллекции
+    // Handle collection clicks.
     const handleCollectionClick = (collection) => {
         setChosenCollection(collection);
         loadCollectionProducts(collection);  

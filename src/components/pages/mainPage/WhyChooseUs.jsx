@@ -6,18 +6,18 @@ const WhyChooseUs = () => {
     let whyChooseUsCards = [
         {
             image: "/src/assets/img/mainPage/why_choose_us_1.png",
-            heading: "Ручная работа",
-            text: "Мы тщательно создаём изысканные чаи, травяные смеси, специи и цветочные композиции вручную, отбирая лучшие ингредиенты со всего мира."
+            heading: "Handcrafted",
+            text: "We carefully craft refined teas, herbal blends, spices, and floral compositions by hand, selecting the best ingredients from around the world."
         },
         {
             image: "/src/assets/img/mainPage/why_choose_us_2.png",
-            heading: "Свежесть",
-            text: "Мы заботимся о свежести каждого чая, чтобы вы могли насладиться настоящим вкусом и ароматом натуральных ингредиентов."
+            heading: "Freshness",
+            text: "We protect the freshness of every tea so you can enjoy the true flavor and aroma of natural ingredients."
         },
         {
             image: "/src/assets/img/mainPage/why_choose_us_3.png",
-            heading: "Экологичность",
-            text: "Мы используем только экологически чистое сырьё из устойчивых хозяйств, чтобы каждый ваш чайный глоток был полезен не только вам, но и планете."
+            heading: "Sustainability",
+            text: "We use eco-conscious ingredients from responsible farms, making every sip better for you and the planet."
         }
     ]    
 
@@ -29,7 +29,7 @@ const WhyChooseUs = () => {
                 <img className={styles.planetImg} src="/src/assets/img/mainPage/why_choose_us_decoration_2.svg" alt="planet image" />
                 <img className={styles.packageImg} src="/src/assets/img/mainPage/why_choose_us_decoration_1.svg" alt="package image" />
                 <img className={styles.logoImage} src="/src/assets/img/fragments/logo.svg" alt="logo" />
-                 предлагает лучшие сорта эксклюзивных чаёв, трав, кофе и какао со всего мира.
+                 offers the finest exclusive teas, herbs, coffee, and cacao from around the world.
             </div>
 
             <div className={styles.WhyChooseUsCards}>

@@ -14,19 +14,19 @@ const RecommendedProducts = ({product}) => {
 
     async function loadProducts() {
       try {
-        // 1. Загрузка из коллекции текущего товара
+        // 1. Load products from the current product collection.
         const res1 = await fetch(`${API_URL}/store/products?collection_id=${collectionId}`, {
           headers: { "x-publishable-api-key": API_KEY },
         });
         const data1 = await res1.json();
-        console.log("res1.json():", data1); // <-- добавь это
+        console.log("res1.json():", data1);
         const collectionProducts = data1.products || [];
 
-        // Фильтрация текущего товара
+        // Exclude the current product.
         let filtered = collectionProducts.filter(p => p.id !== product.id);
         console.log("filtered ", filtered);
 
-        // 2. Если меньше 4 — добираем из "Бестселлеров"
+        // 2. If fewer than 4 products are available, fill from bestsellers.
         if (filtered.length < 4) {
           const needed = 4 - filtered.length;
 
@@ -37,14 +37,14 @@ const RecommendedProducts = ({product}) => {
 
           const uniqueBestsellers = bestsellers
             .filter(p => p.id !== product.id && !filtered.some(fp => fp.id === p.id))
-            .slice(0, needed); // только сколько нужно
+            .slice(0, needed); // Only take what is needed.
 
           filtered = [...filtered, ...uniqueBestsellers];
         }
 
         setRecommendedProducts(filtered.slice(0, 4));
       } catch (err) {
-        console.error("Ошибка при загрузке рекомендуемых товаров:", err);
+        console.error("Failed to load recommended products:", err);
       }
     }
 
@@ -55,7 +55,7 @@ const RecommendedProducts = ({product}) => {
 
     return (
         <div className={styles.recommended_products_wrapper}>
-            <h5 className={styles.recommended_products_heading}>Рекомендуемые товары</h5>
+            <h5 className={styles.recommended_products_heading}>Recommended Products</h5>
 
             <div className={styles.recommended_products_container}>
                 {recommendedProducts.map((product) => (

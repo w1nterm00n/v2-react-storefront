@@ -32,12 +32,12 @@ const SearchedProducts = () => {
             <h2 style={{ textAlign: "center", padding: 20 }}>{collection.title}</h2>
           </>
         ) : (
-          <VisualHeader text={"Результаты поиска"} />
+          <VisualHeader text={"Search Results"} />
         )}
 
         <div style={{width: 'fit-content', margin: '100px auto'}}>
         {results.length === 0 ? (
-            <p style={{ textAlign: "center", padding: 20 }}>Ничего не найдено!</p>
+            <p style={{ textAlign: "center", padding: 20 }}>No results found.</p>
         ) : (
           <Posts products={results} loading={false}/>
         )}

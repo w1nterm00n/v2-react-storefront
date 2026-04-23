@@ -24,7 +24,7 @@ const ProductPrice = ({ productId, regionId }) => {
     fetchPrice()
   }, [productId, regionId])
 
-  return <p style={{textAlign: "left"}}>Цена: {price ? `${price} ₽` : "Загрузка..."}</p>
+  return <p style={{textAlign: "left"}}>Price: {price ? `${price} RUB` : "Loading..."}</p>
 };
 
 export default ProductPrice;

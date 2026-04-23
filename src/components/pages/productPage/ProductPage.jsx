@@ -18,16 +18,16 @@ const ProductPage = () => {
       useEffect(() => {
         const loadProduct = async () => {
           try {
-            //Получаю товар
+            // Load product.
             const productRes = await fetch(`${API_URL}/store/products/${id}`, {
               headers: { "x-publishable-api-key": API_KEY },
             });
             const data = await productRes.json();
             const baseProduct = data.product || [];
-            console.log(" товар : ", baseProduct);
+            console.log("Product:", baseProduct);
             setProduct(baseProduct);
           } catch (err) {
-            console.error("Ошибка при загрузке продукта:", err);
+            console.error("Failed to load product:", err);
           }
         };
     
@@ -53,7 +53,7 @@ const ProductPage = () => {
           window.dispatchEvent(new Event("cartAmountUpdated"));
 
         } catch (err) {
-          console.error('Ошибка при добавлении товара в корзину:', err);
+          console.error('Failed to add product to cart:', err);
         }
       };
       
@@ -62,12 +62,12 @@ const ProductPage = () => {
   return (
     <>
     <Navbar></Navbar>
-    <VisualHeader text={`Товары - ${product.title}`}/>
+    <VisualHeader text={`Products - ${product.title}`}/>
 
     <div className={`container py-5 ${styles.product_info_wrapper}`}>
         <div className={`row ${styles.product_info_container}`}>
             <div className="col-md-6">
-                {/* <img src={product.thumbnail} className="img-fluid" alt="Товар" /> */}
+                {/* <img src={product.thumbnail} className="img-fluid" alt="Product" /> */}
                 <ProductImages images={product.images}></ProductImages>
             </div>
             <div className={`col-md-6 ${styles.product_info_text}`}>
@@ -75,16 +75,16 @@ const ProductPage = () => {
                 <ProductPrice productId={id} regionId="reg_01JRNVQXY95SA2ZY3F0VK3C2YG"/>
                 <h6 className={styles.subtitle}>{product.subtitle}</h6>
 
-                <button className={styles.btn_default} onClick={() => addItemToCart(product.variants[0].id)}>ДОБАВИТЬ</button>
+                <button className={styles.btn_default} onClick={() => addItemToCart(product.variants[0].id)}>ADD</button>
                 {product.collection && (
-                  <p>Коллекция: {product.collection.title}</p>
+                  <p>Collection: {product.collection.title}</p>
                 )}
             </div>
         </div>
     </div>
 
     <div className={styles.description_wrapper}>
-        <h4>ОПИСАНИЕ</h4>
+        <h4>DESCRIPTION</h4>
         <p className={styles.product_description}>{product.description}</p>
     </div>
 

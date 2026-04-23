@@ -15,14 +15,14 @@ const ProductList = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(9);
-  const [sortLabel, setSortLabel] = useState("По умолчанию");
+  const [sortLabel, setSortLabel] = useState("Default");
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
 
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        // 3. Получаем все товары
+        // Load all products.
         const productsRes = await fetch(`${API_URL}/store/products?region_id=${REGION_ID}`, {
           headers: { "x-publishable-api-key": API_KEY },
         });
@@ -35,7 +35,7 @@ const ProductList = () => {
         setProducts(baseProducts);
         findMinAndMaxPrice(baseProducts);
       } catch (err) {
-        console.error("Ошибка при загрузке продуктов:", err);
+        console.error("Failed to load products:", err);
       } finally {
         setLoading(false);
       }
@@ -46,27 +46,27 @@ const ProductList = () => {
   const indexOfLastPost = currentPage * productsPerPage;
   const indexOfFirstPost = indexOfLastPost - productsPerPage;
   const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
-  //массив эл-тов, которые отобразятся на этой стр
+  // Products displayed on the current page.
 
   const handlePagination = (pageNumber) => {
     setCurrentPage(pageNumber);
   }
 
-  //сортировка от минимума к максимуму
+  // Sort from lowest to highest price.
   const handleSortMin = () => {
     const sortedProducts = [...products].sort((a, b) => parseFloat(a.price_rub) - parseFloat(b.price_rub));
     setProducts(sortedProducts);
-    setSortLabel("По возрастанию цены");
+    setSortLabel("Price: low to high");
   };
 
-  //сортировка от максимума к минимуму
+  // Sort from highest to lowest price.
   const handleSortMax = () => {
     const sortedProducts = [...products].sort((a, b) => parseFloat(b.price_rub) - parseFloat(a.price_rub));
     setProducts(sortedProducts);
-    setSortLabel("По убыванию цены");
+    setSortLabel("Price: high to low");
   };
 
-  //поиск минимальной и максимальной цены
+  // Find the minimum and maximum price.
   const findMinAndMaxPrice = (products) => {
     if (products.length === 0) return;
 
@@ -81,12 +81,12 @@ const ProductList = () => {
     setMinPrice(min);
     setMaxPrice(max);
   }
-  //поиск минимальной и максимальной цены
+  // Find the minimum and maximum price.
 
   return (
     <>
     <Navbar></Navbar>
-    <VisualHeader text={"Товары"}></VisualHeader>
+    <VisualHeader text={"Products"}></VisualHeader>
     <div style={{marginTop: '100px'}}>
 
       <FiltersPanel onSortMin={handleSortMin} onSortMax={handleSortMax} sortLabel={sortLabel}></FiltersPanel>

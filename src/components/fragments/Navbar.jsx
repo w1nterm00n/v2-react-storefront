@@ -8,7 +8,7 @@ import styles from './fragments.module.scss';
 const Navbar = () => {
   const [query, setQuery] = useState('');
 
-//fetch запрос для количества айтемов в корзине
+// Fetch the cart item count.
     const [totalAmountOfItems, setTotalAmountOfItems] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
     const [filtered, setFiltered] = useState([]);
@@ -32,7 +32,7 @@ const Navbar = () => {
     useEffect(() => {
         const loadCartProductsAmount = async () => {
           try {
-            //Получаю содержимое корзины
+            // Load cart contents.
             const cartProductsJSON = await fetch(`${API_URL}/store/carts/${TEST_CART_ID}`, {
               headers: { "x-publishable-api-key": API_KEY },
             });
@@ -43,13 +43,13 @@ const Navbar = () => {
             });
             setTotalAmountOfItems(cartItemsAmount);
           } catch (err) {
-            console.error("Ошибка при загрузке продукта:", err);
+            console.error("Failed to load product:", err);
           }
         };
     
         loadCartProductsAmount();
 
-        //моментальное обновление цифры без необходимости перезагружать страницу
+        // Update the cart counter without reloading the page.
         const handleCartAmountUpdate = () => {
             loadCartProductsAmount();
         };
@@ -57,7 +57,7 @@ const Navbar = () => {
         return () => {
             window.removeEventListener("cartAmountUpdated", handleCartAmountUpdate);
         };
-        //моментальное обновление цифры
+        // Update the cart counter.
     }, []);
 
   function handleSearch (e) {
@@ -72,7 +72,7 @@ const Navbar = () => {
     navigate('/products/search', { state: { results } });
   }
 
-  // запрос чтобы получить имя юзера и инфу о юзере:
+  // Request the current customer's name and profile data.
     useEffect(() => {
       console.log("123");
       const loadUserName = async () => {
@@ -85,7 +85,7 @@ const Navbar = () => {
         })
         .then(response => {
           if (!response.ok) {
-            throw new Error(`Ошибка: ${response.status}`);
+            throw new Error(`Error: ${response.status}`);
           }
           return response.json();
         })
@@ -93,20 +93,20 @@ const Navbar = () => {
           setUserName(data.customer.first_name);
         })
         .catch(error => {
-          console.error('Ошибка при получении пользователя:', error);
+          console.error('Failed to get customer:', error);
         });
         
       };
       loadUserName();
     }, []);
-  // запрос чтобы получить имя юзера
+  // Request the current customer's name.
 
-  //применяем стиль к "активной" ссылке в навбаре
+  // Apply the active style to the current navbar link.
   const getLinkClass = (path) => {
     const isActive = location.pathname === path;
     return `nav-item nav-link ${isActive ? styles.active_link : ''}`;
   };
-  //применяем стиль к "активной" ссылке в навбаре
+  // Apply the active style to the current navbar link.
   
   return (
 
@@ -117,7 +117,7 @@ const Navbar = () => {
   <div className={styles.navbar_container}>
     <nav className="navbar navbar-light bg-white navbar-expand-xl">
       <a href="/" className={styles.navbar_logo}>
-        <img src="/src/assets/img/fragments/logo.svg" alt="логотип"/>
+        <img src="/src/assets/img/fragments/logo.svg" alt="logo"/>
       </a>
       
       <button
@@ -129,16 +129,16 @@ const Navbar = () => {
       <div className={`navbar-collapse ${isOpen ? 'show' : 'collapse'}`} id="navbarCollapse">
         <div className={`navbar-nav mx-auto ${styles.navbar_links}`}>
           <a href="/" className={getLinkClass('/')} style={{marginLeft: "200px"}}>
-            Главная
+            Home
           </a>
           <a href="/products" className={getLinkClass('/products')}>
-            Товары
+            Products
           </a>
           <a href="/sales" className={getLinkClass('/sales')}>
-            Акции
+            Deals
           </a>
           <a href="/contacts" className={getLinkClass('/contacts')}>
-            Контакты
+            Contacts
           </a>
         </div>
         <div className="d-flex m-3 me-0">
@@ -146,7 +146,7 @@ const Navbar = () => {
               <input
                   className={`form-control me-2 ${styles.search_input}`}
                   type="search"
-                  placeholder="Искать"
+                  placeholder="Search"
                   aria-label="Search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
@@ -171,8 +171,8 @@ const Navbar = () => {
           </Dropdown.Toggle>
 
         <Dropdown.Menu className={`bg-white ${styles.dropdown_auth}`}>
-            <Dropdown.Item href="/user/auth">Войти</Dropdown.Item>
-            <Dropdown.Item href="/user/create">Создать аккаунт</Dropdown.Item>
+            <Dropdown.Item href="/user/auth">Sign in</Dropdown.Item>
+            <Dropdown.Item href="/user/create">Create account</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         )}

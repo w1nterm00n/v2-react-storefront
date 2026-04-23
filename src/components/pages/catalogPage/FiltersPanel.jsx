@@ -14,11 +14,11 @@ const FiltersPanel = ({ onSortMin, onSortMax, sortLabel }) => {
 
     const navigate = useNavigate();
 
-    // запрос чтобы получить категории:
+    // Request categories.
     useEffect(() => {
         const loadCategories = async () => {
           try {
-            // 3. Получаем все категории
+            // Load all categories.
             const categoriesRes = await fetch(`${API_URL}/store/product-categories`, {
               headers: { "x-publishable-api-key": API_KEY },
             });
@@ -33,37 +33,37 @@ const FiltersPanel = ({ onSortMin, onSortMax, sortLabel }) => {
             setCategories(parentCategories);
 
           } catch (err) {
-            console.error("Ошибка при загрузке продуктов:", err);
+            console.error("Failed to load products:", err);
           } 
         };
         loadCategories();
       }, []);
-    // запрос чтобы получить категории
+    // Request categories.
 
-    // запрос чтобы получить коллекции:
+    // Request collections.
     useEffect(() => {
         const loadCollections = async () => {
           try {
-            // 3. Получаем все коллекции
+            // Load all collections.
             const collectionsRes = await fetch(`${API_URL}/store/collections`, {
               headers: { "x-publishable-api-key": API_KEY },
             });
             const data = await collectionsRes.json();
             setCollections(data.collections);
           } catch (err) {
-            console.error("Ошибка при загрузке продуктов:", err);
+            console.error("Failed to load products:", err);
           } 
         };
         loadCollections();
       }, []);
-    // запрос чтобы получить коллекции
+    // Request collections.
 
     
-    //функция получающая товары нужной категории:
+    // Load products from the selected category.
         async function loadCategory (category) {
           console.log("loadCategory is workin");
           try {
-            //Получаю товары нужной категории
+            // Load products from the selected category.
             const productsRes = await fetch(`${API_URL}/store/products?category_id=${category.id}`, {
               headers: { "x-publishable-api-key": API_KEY },
             });
@@ -71,12 +71,12 @@ const FiltersPanel = ({ onSortMin, onSortMax, sortLabel }) => {
             const results = data.products || [];
             navigate('/products/search', { state: { results, category} });
           } catch (err) {
-            console.error("Ошибка при загрузке продуктов:", err);
+            console.error("Failed to load products:", err);
           }
         };
-    //функция получающая товары нужной категории
+    // Load products from the selected category.
 
-    //функция получающая товары нужной коллекции:
+    // Load products from the selected collection.
         async function loadCollection (collection) {
           try {
             const collectionProducts = await fetch(`${API_URL}/store/products?collection_id=${collection.id}`, {
@@ -87,10 +87,10 @@ const FiltersPanel = ({ onSortMin, onSortMax, sortLabel }) => {
             console.log(collection);
             navigate('/products/search', { state: { results, collection} });
           } catch (err) {
-            console.error("Ошибка при загрузке продуктов коллекции:", err);
+            console.error("Failed to load collection products:", err);
           } 
         };
-    //функция получающая товары нужной коллекции
+    // Load products from the selected collection.
 
 
 
@@ -104,8 +104,8 @@ const FiltersPanel = ({ onSortMin, onSortMax, sortLabel }) => {
             </Dropdown.Toggle >
 
             <Dropdown.Menu className="bg-white shadow border">
-              <Dropdown.Item onClick={onSortMin}>По возрастанию цены</Dropdown.Item>
-              <Dropdown.Item onClick={onSortMax}>По убыванию цены</Dropdown.Item>
+              <Dropdown.Item onClick={onSortMin}>Price: low to high</Dropdown.Item>
+              <Dropdown.Item onClick={onSortMax}>Price: high to low</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 
