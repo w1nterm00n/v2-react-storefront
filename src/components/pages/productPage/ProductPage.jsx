@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from '../../fragments/Footer';
 import ProductPrice from '../../fragments/ProductPrice';
@@ -32,7 +32,7 @@ const ProductPage = () => {
         };
     
         loadProduct();
-      }, []);
+      }, [id]);
 
       const addItemToCart = async (id_variant) => {
         try {

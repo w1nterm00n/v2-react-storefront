@@ -117,7 +117,7 @@ const CreateUserForm = ({ token }) => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <div id="emailHelp" class="form-text">The email must match the one you entered earlier.</div>
+            <div id="emailHelp" className="form-text">The email must match the one you entered earlier.</div>
           </div>
 
           <button type="submit" className="btn btn-primary">

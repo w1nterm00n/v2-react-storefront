@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Footer from '../../fragments/Footer';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../fragments/Navbar';
@@ -27,7 +27,7 @@ const PersonalAccountPage = () => {
     .then(data => {
       setPersonalInfo(data.customer);
     });
-  }, []);
+  }, [token]);
 
   return (
     <div className='content-wrapper d-flex flex-column min-vh-100'>

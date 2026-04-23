@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
 import MainPageSlider from './MainPageSlider';
-import styles from './mainPage.module.scss';
 import FeaturedProducts from './FeaturedProducts';
 import Navbar from '../../fragments/Navbar';
 import WhyChooseUs from './WhyChooseUs';

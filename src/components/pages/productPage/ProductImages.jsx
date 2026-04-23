@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import styles from './productPage.module.scss';
 import PhotosCarousel from './PhotosCarousel';
 

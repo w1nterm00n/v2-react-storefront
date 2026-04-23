@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './fragments.module.scss';
 import ProductPrice from './ProductPrice';
 import { REGION_ID } from '../../constants';
@@ -13,9 +13,9 @@ const ProductCard = (product) => {
                 <img src={product.product.thumbnail} alt="test picture" />
                 <h5 className={styles.card_title}>{product.product.title}</h5>
                 <ProductPrice productId={product.product.id} regionId={REGION_ID}></ProductPrice>
-                <a href={`/products/${product.product.id}`} className={styles.btn_default}>
+                <Link to={`/products/${product.product.id}`} className={styles.btn_default}>
                     VIEW PRODUCT
-                </a>
+                </Link>
             </div>
         </div>
       </div>

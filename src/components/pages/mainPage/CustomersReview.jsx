@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './mainPage.module.scss';
-import { div, p } from 'framer-motion/client';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const reviewsArray = [
+    {
+        name: "Daniel K.",
+        pic: "/src/assets/img/mainPage/person_pic_2.png",
+        text: "I have never tasted anything like it. The natural aroma and smooth flavor make every cup a real pleasure."
+    },
+    {
+        name: "Olga S.",
+        pic: "/src/assets/img/mainPage/person_pic_1.svg",
+        text: "This organic tea is excellent. It tastes so fresh, as if the leaves were picked and brewed right in the cup."
+    },
+    {
+        name: "Elena M.",
+        pic: "/src/assets/img/mainPage/person_pic_3.png",
+        text: "The tea exceeded every expectation. It feels like drinking something filled with nature and care."
+    }
+];
+
+const MotionParagraph = motion.p;
+const MotionImage = motion.img;
 
 const CustomersReview = () => {
-    
-    let reviewsArray = [
-        {
-            name: "Daniel K.",
-            pic: "/src/assets/img/mainPage/person_pic_2.png",
-            text: "I have never tasted anything like it. The natural aroma and smooth flavor make every cup a real pleasure."
-        },
-        {
-            name: "Olga S.",
-            pic: "/src/assets/img/mainPage/person_pic_1.svg",
-            text: "This organic tea is excellent. It tastes so fresh, as if the leaves were picked and brewed right in the cup."
-        },
-        {
-            name: "Elena M.",
-            pic: "/src/assets/img/mainPage/person_pic_3.png",
-            text: "The tea exceeded every expectation. It feels like drinking something filled with nature and care."
-        }
-    ];
-
     const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
     const handleLeftClick = () => {
@@ -67,12 +67,12 @@ const CustomersReview = () => {
 
             <div className={styles.text_and_arrows_container}>
 
-                <a href='#!' className={styles.arrow_btn} onClick={handleLeftClick}>
+                <button type="button" className={styles.arrow_btn} onClick={handleLeftClick}>
                     <span className={styles.arrow} data-direction="left"></span>
-                </a>
+                </button>
 
                 <AnimatePresence mode="wait">
-                    <motion.p
+                    <MotionParagraph
                         key={currentReview.text}
                         className={styles.text_wrapper}
                         initial={{ opacity: 0 }}
@@ -81,20 +81,20 @@ const CustomersReview = () => {
                         transition={{ duration: 0.6 }}
                     >
                         “{currentReview.text}”
-                    </motion.p>
+                    </MotionParagraph>
                 </AnimatePresence>
 
 
-                <a href='#!' className={styles.arrow_btn} onClick={handleRightClick}>
+                <button type="button" className={styles.arrow_btn} onClick={handleRightClick}>
                     <span className={styles.arrow} data-direction="right"></span>
-                </a>
+                </button>
 
             </div>
 
             <div className={styles.person_wrapper}>
                 <div className={styles.person_photo}>
                 <AnimatePresence mode="wait">
-                    <motion.img
+                    <MotionImage
                         key={currentReview.pic}
                         src={currentReview.pic}
                         alt="customer portrait"
@@ -106,7 +106,7 @@ const CustomersReview = () => {
                 </AnimatePresence>
                 </div>
                 <AnimatePresence mode="wait">
-                    <motion.p
+                    <MotionParagraph
                         key={currentReview.text}
                         className={styles.text_wrapper}
                         initial={{ opacity: 0 }}
@@ -115,7 +115,7 @@ const CustomersReview = () => {
                         transition={{ duration: 0.6 }}
                     >
                         “{currentReview.name}”
-                    </motion.p>
+                    </MotionParagraph>
                 </AnimatePresence>
                 <img className={styles.right_leaf} src="/src/assets/img/mainPage/review_right_three_leafes.svg" alt="leaf" />
             </div>

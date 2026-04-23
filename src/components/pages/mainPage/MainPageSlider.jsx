@@ -1,30 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './mainPage.module.scss';
 
-const MainPageSlider = () => {
-  
-  let productsArray = [
-    {
-      name : "Jasmine Green Tea",
-      description: "A rich taste and jasmine aroma for true green tea lovers.",
-      image: "/src/assets/img/mainPage/Banner1img1.png",
-    },
-    {
-      name : "Raspberry Red Tea",
-      description: "Bright berry flavor and uplifting raspberry energy in every cup.",
-      image: "/src/assets/img/mainPage/Banner1img2.png"
-    },
-    {
-      name : "Golden Turmeric Tea",
-      description: "A warm, spicy turmeric aroma with notes of lemon for comfort and wellness.",
-      image: "/src/assets/img/mainPage/Banner1img3.png"
-    }
-  ]
+const productsArray = [
+  {
+    name : "Jasmine Green Tea",
+    description: "A rich taste and jasmine aroma for true green tea lovers.",
+    image: "/src/assets/img/mainPage/Banner1img1.png",
+  },
+  {
+    name : "Raspberry Red Tea",
+    description: "Bright berry flavor and uplifting raspberry energy in every cup.",
+    image: "/src/assets/img/mainPage/Banner1img2.png"
+  },
+  {
+    name : "Golden Turmeric Tea",
+    description: "A warm, spicy turmeric aroma with notes of lemon for comfort and wellness.",
+    image: "/src/assets/img/mainPage/Banner1img3.png"
+  }
+];
 
+const MainPageSlider = () => {
   const bgClasses = [styles.green_bg, styles.red_bg, styles.yellow_bg];
   const [index, setIndex] = useState(0);
   const actualProduct = productsArray[index];
-  const currentBgClass = bgClasses[index];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -42,9 +41,9 @@ const MainPageSlider = () => {
       <div className={`${styles.banner1}`}>
         <div className={styles.nav_dots_wrapper}>
           <div className={styles.nav_dots}>
-            <div className={index == 0 ? styles.circle : styles.dot}></div>
-            <div className={index == 1 ? styles.circle : styles.dot}></div>
-            <div className={ index == 2 ? styles.circle : styles.dot}></div>
+            <div className={index === 0 ? styles.circle : styles.dot}></div>
+            <div className={index === 1 ? styles.circle : styles.dot}></div>
+            <div className={ index === 2 ? styles.circle : styles.dot}></div>
           </div>
         </div>
         <div className={styles.picture_area_wrapper}>
@@ -59,7 +58,7 @@ const MainPageSlider = () => {
           <img className={styles.leaf_left} src="/src/assets/img/mainPage/leaf_left.svg" alt="leaf" />
           <h2> {actualProduct.name} </h2>
           <p> {actualProduct.description} </p>
-          <button><a href="/products">VIEW PRODUCTS</a></button>
+          <button><Link to="/products">VIEW PRODUCTS</Link></button>
         </div>
       </div>
     </article>

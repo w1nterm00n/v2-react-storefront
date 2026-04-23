@@ -276,15 +276,17 @@
                     justify-content: center;
                     padding: 6px 0;
                     background-color: rgba(157, 214, 85, 0.15);
-                    a{
+                    button{
                         font-family: 'Cormorant Garamond';
                         letter-spacing: 2px;
                         color: #194A33;
                         font-size: 17px;
+                        border: 0;
+                        background: transparent;
                     }
                 }
                 .chosen_collection{
-                    a{
+                    button{
                         color: #fff;
                     }
                     background-color: #194A33;
@@ -518,6 +520,7 @@
                 width: 100px;
                 height: 100px;
                 background: #f7f7f7;
+                border: 0;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
@@ -638,5 +641,4 @@
     }
 }
 //CUSTOMERS REVIEW
-
 

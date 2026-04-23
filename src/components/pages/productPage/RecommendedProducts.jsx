@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import styles from './productPage.module.scss';
 import ProductCard from '../../fragments/ProductCard';
 import { API_KEY, API_URL, BESTSELLERS_ID } from '../../../constants';

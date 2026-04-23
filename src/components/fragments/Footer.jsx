@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './fragments.module.scss';
 
 const Footer = () => {
@@ -21,9 +20,9 @@ return (
         <div className={styles.dividing_line}></div>
 
         <div className={styles.logo_block}>
-            <a href="/" className={styles.footer_logo}>
+            <Link to="/" className={styles.footer_logo}>
               <img src="/src/assets/img/fragments/logo_white.svg" alt="logo"/>
-            </a>
+            </Link>
         </div>
 
         <div className={styles.dividing_line}></div>

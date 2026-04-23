@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from '../../fragments/ProductCard';
 import styles from './catalogPage.module.scss';
 import { API_KEY, API_URL, REGION_ID } from '../../../constants';
@@ -111,14 +111,9 @@ const Filtration = ({minPrice, maxPrice}) => {
                     <p>
                     Price: {Math.round(minPrice)} RUB - {value === 0 ? Math.round(maxPrice) : value} RUB
                     </p>
-                    <a href="#!"
-                      onClick={e => {
-                        e.preventDefault();
-                        findProductsByPrice();
-                      }}
-                     className={styles.filter_apply_link}>
-                    <i>Apply</i>
-                    </a>
+                    <button type="button" onClick={findProductsByPrice} className={styles.filter_apply_link}>
+                      <i>Apply</i>
+                    </button>
                 </div>
             </div>
             
@@ -130,7 +125,7 @@ const Filtration = ({minPrice, maxPrice}) => {
                     <div className={styles.categories_child}>
 
                         {category.category_children.map((child) => (
-                        <a key={child.id} className="dropdown-item" href="#" onClick={() => loadCategory(child)}>{child.name}</a>
+                        <button key={child.id} type="button" className="dropdown-item" onClick={() => loadCategory(child)}>{child.name}</button>
                         ))}
 
                     </div>

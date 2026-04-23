@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-import Pagination from "../../fragments/Pagination";
 import Footer from "../../fragments/Footer";
 import Navbar from "../../fragments/Navbar";
 import styles from "./contactPage.module.scss"

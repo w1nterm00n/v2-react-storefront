@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import MainPageSlider from './MainPageSlider';
+import { Link } from 'react-router-dom';
 import styles from './mainPage.module.scss';
-import ProductCard from '../../fragments/ProductCard';
 import CollectionFilterPanel from './CollectionFilterPanel';
 
 
@@ -14,7 +12,7 @@ const FeaturedProducts = () => {
             <h3>Popular Products</h3>
             <CollectionFilterPanel></CollectionFilterPanel>
             <div className={styles.link}>
-                <a href="/products">GO TO CATALOG</a>
+                <Link to="/products">GO TO CATALOG</Link>
                 <img src="/src/assets/img/mainPage/link_decoration.svg" alt="arrow" />
             </div>
         </div>

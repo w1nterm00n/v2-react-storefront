@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../../fragments/Footer';
 import Navbar from '../../fragments/Navbar';
 import styles from './cart.module.scss';
@@ -108,9 +109,9 @@ const Cart = () => {
             <img src={cartItem.thumbnail} className={`img-fluid ${styles.product_image}`} alt="Product" />
             </div>
             <div className="col-md-4">
-            <a href={`/products/${cartItem.product.id}`}>
+            <Link to={`/products/${cartItem.product.id}`}>
             {cartItem.product_title}
-            </a>
+            </Link>
             <p className="text-muted">{cartItem.product_subtitle}</p>
             </div>
 

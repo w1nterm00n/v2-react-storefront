@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Footer from '../../fragments/Footer';
 import CreateUserTokenForm from '../../forms/CreateUserTokenForm';
 import CreateUserForm from '../../forms/CreateUserForm';

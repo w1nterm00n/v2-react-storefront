@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './mainPage.module.scss';
 import ProductCard from '../../fragments/ProductCard';
 import { API_KEY, API_URL } from '../../../constants';
@@ -62,9 +62,10 @@ const CollectionFilterPanel = () => {
             className={`${styles.collection_filter_item} ${
                 chosenCollection?.id === collection.id ? styles.chosen_collection : ''
             }`}
-            onClick={() => handleCollectionClick(collection)}
             >
-            <a href="#!">{collection.title}</a>
+            <button type="button" onClick={() => handleCollectionClick(collection)}>
+              {collection.title}
+            </button>
             </div>
         ))}
         </div>
@@ -72,7 +73,7 @@ const CollectionFilterPanel = () => {
         <div className={styles.grid_cards_wrapper}>
             <div className={styles.grid_cards}>
                 {actualProducts.map((actualProduct) => (
-                    <ProductCard product={actualProduct}></ProductCard>
+                    <ProductCard product={actualProduct} key={actualProduct.id}></ProductCard>
                 ))}
             </div>
         </div>

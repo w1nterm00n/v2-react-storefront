@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "../../fragments/Pagination";
 import Footer from "../../fragments/Footer";
 import Navbar from "../../fragments/Navbar";
@@ -11,7 +11,7 @@ const SalesPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(9);
+  const productsPerPage = 9;
 
   useEffect(() => {
     const loadProducts = async () => {

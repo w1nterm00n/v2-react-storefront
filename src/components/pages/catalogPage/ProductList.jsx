@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Posts from "./Posts";
 import Pagination from "../../fragments/Pagination";
 import Footer from "../../fragments/Footer";
@@ -7,14 +7,14 @@ import Navbar from "../../fragments/Navbar";
 import styles from './catalogPage.module.scss';
 import Filtration from "./Filtration";
 import VisualHeader from "../../fragments/VisualHeader";
-import { API_URL, COUNTRY_CODE, API_KEY, REGION_ID } from "../../../constants";
+import { API_URL, API_KEY, REGION_ID } from "../../../constants";
 
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(9);
+  const productsPerPage = 9;
   const [sortLabel, setSortLabel] = useState("Default");
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
