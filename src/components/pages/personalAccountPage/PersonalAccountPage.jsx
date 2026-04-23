@@ -12,9 +12,6 @@ const PersonalAccountPage = () => {
   const navigate = useNavigate();
 
   const logOut = function () {
-    console.log("log out");
-    const token = localStorage.getItem("token");
-    console.log(token);
     localStorage.removeItem("token");
     navigate('/');
   }
@@ -28,7 +25,6 @@ const PersonalAccountPage = () => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data.customer);
       setPersonalInfo(data.customer);
     });
   }, []);

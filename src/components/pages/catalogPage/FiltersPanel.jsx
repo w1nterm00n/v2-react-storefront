@@ -61,7 +61,6 @@ const FiltersPanel = ({ onSortMin, onSortMax, sortLabel }) => {
     
     // Load products from the selected category.
         async function loadCategory (category) {
-          console.log("loadCategory is workin");
           try {
             // Load products from the selected category.
             const productsRes = await fetch(`${API_URL}/store/products?category_id=${category.id}`, {
@@ -84,7 +83,6 @@ const FiltersPanel = ({ onSortMin, onSortMax, sortLabel }) => {
             });
             const data = await collectionProducts.json();
             const results = data.products || [];
-            console.log(collection);
             navigate('/products/search', { state: { results, collection} });
           } catch (err) {
             console.error("Failed to load collection products:", err);

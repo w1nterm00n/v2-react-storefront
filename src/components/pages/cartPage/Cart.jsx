@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Footer from '../../fragments/Footer';
 import Navbar from '../../fragments/Navbar';
 import styles from './cart.module.scss';
-import { API_KEY, API_URL, TEST_CART_ID } from '../../../constants';
+import { API_KEY, API_URL } from '../../../constants';
+import { fetchCart, getOrCreateCartId } from '../../../lib/cart';
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -10,10 +11,9 @@ const Cart = () => {
 
     //delete item function
     const deleteCartProduct = async (id_item) => {
-      console.log("item deleted: ", id_item);
       try {
-        // Load cart contents.
-        await fetch(`${API_URL}/store/carts/${TEST_CART_ID}/line-items/${id_item}`, {
+        const cartId = await getOrCreateCartId();
+        await fetch(`${API_URL}/store/carts/${cartId}/line-items/${id_item}`, {
           method: 'DELETE',
           headers: { "x-publishable-api-key": API_KEY },
         });
@@ -26,7 +26,8 @@ const Cart = () => {
     //update item function
     const incrementItem = async (id_item, quantity_item) => {
       try {
-        await fetch(`${API_URL}/store/carts/${TEST_CART_ID}/line-items/${id_item}`, {
+        const cartId = await getOrCreateCartId();
+        await fetch(`${API_URL}/store/carts/${cartId}/line-items/${id_item}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -45,7 +46,8 @@ const Cart = () => {
 
     const decrementItem = async (id_item, quantity_item) => {
       try {
-        await fetch(`${API_URL}/store/carts/${TEST_CART_ID}/line-items/${id_item}`, {
+        const cartId = await getOrCreateCartId();
+        await fetch(`${API_URL}/store/carts/${cartId}/line-items/${id_item}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -67,16 +69,10 @@ const Cart = () => {
       useEffect(() => {
         const loadCartProducts = async () => {
           try {
-            // Load cart contents.
-            const cartProductsJSON = await fetch(`${API_URL}/store/carts/${TEST_CART_ID}`, {
-              headers: { "x-publishable-api-key": API_KEY },
-            });
-            const data = await cartProductsJSON.json();
+            const data = await fetchCart();
             const cartProducts = data.cart.items;
             setCartItems(cartProducts);
             setCartData(data.cart);
-            console.log("Cart data updated");
-            console.log(cartItems); // State updates asynchronously, so this may log the previous value.
           } catch (err) {
             console.error("Failed to load product:", err);
           }

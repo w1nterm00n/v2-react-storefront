@@ -13,7 +13,6 @@ const SearchedProducts = () => {
     const category = location.state?.category || null;
     const collection = location.state?.collection || null;
 
-    console.log("collection 1: ", collection);
   return (
     <div className='content-wrapper d-flex flex-column min-vh-100'>
 

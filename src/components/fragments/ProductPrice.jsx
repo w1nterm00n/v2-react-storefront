@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { CiTextAlignLeft } from "react-icons/ci";
-import { API_KEY } from "../../constants";
+import { API_KEY, API_URL } from "../../constants";
 
 const ProductPrice = ({ productId, regionId }) => {
   const [price, setPrice] = useState(null)
@@ -8,7 +8,7 @@ const ProductPrice = ({ productId, regionId }) => {
   useEffect(() => {
     const fetchPrice = async () => {
       const res = await fetch(
-        `http://localhost:9000/store/products/${productId}?region_id=${regionId}`,
+        `${API_URL}/store/products/${productId}?region_id=${regionId}`,
         {
           headers: { "x-publishable-api-key": API_KEY },
         }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { API_KEY, API_URL, TEST_CART_ID } from '../../constants';
+import { API_KEY, API_URL } from '../../constants';
+import { fetchCart } from '../../lib/cart';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaSearch, FaShoppingBag, FaUser, FaMapMarkerAlt, FaEnvelope, FaBars } from 'react-icons/fa';
 import { Dropdown } from 'react-bootstrap';
@@ -32,11 +33,7 @@ const Navbar = () => {
     useEffect(() => {
         const loadCartProductsAmount = async () => {
           try {
-            // Load cart contents.
-            const cartProductsJSON = await fetch(`${API_URL}/store/carts/${TEST_CART_ID}`, {
-              headers: { "x-publishable-api-key": API_KEY },
-            });
-            const data = await cartProductsJSON.json();
+            const data = await fetchCart();
             let cartItemsAmount = 0;
             data.cart.items.forEach(cartItem => {
                 cartItemsAmount = cartItemsAmount + cartItem.quantity;
@@ -67,16 +64,14 @@ const Navbar = () => {
       p.title.toLowerCase().includes(q) || p.subtitle.toLowerCase().includes(q) ||
       (p.description && p.description.toLowerCase().includes(q))
     );
-    console.log(results);
     setFiltered(results);
     navigate('/products/search', { state: { results } });
   }
 
   // Request the current customer's name and profile data.
     useEffect(() => {
-      console.log("123");
       const loadUserName = async () => {
-        fetch('http://localhost:9000/store/customers/me', {
+        fetch(`${API_URL}/store/customers/me`, {
           method: 'GET',
           headers: {
             'Authorization': 'Bearer ' + token,

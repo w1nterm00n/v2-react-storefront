@@ -19,12 +19,10 @@ const RecommendedProducts = ({product}) => {
           headers: { "x-publishable-api-key": API_KEY },
         });
         const data1 = await res1.json();
-        console.log("res1.json():", data1);
         const collectionProducts = data1.products || [];
 
         // Exclude the current product.
         let filtered = collectionProducts.filter(p => p.id !== product.id);
-        console.log("filtered ", filtered);
 
         // 2. If fewer than 4 products are available, fill from bestsellers.
         if (filtered.length < 4) {
@@ -50,8 +48,6 @@ const RecommendedProducts = ({product}) => {
 
     loadProducts();
   }, [collectionId, product?.id]);
-
-  console.log(recommendedProducts);
 
     return (
         <div className={styles.recommended_products_wrapper}>

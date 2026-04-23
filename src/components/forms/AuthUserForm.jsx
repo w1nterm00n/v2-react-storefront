@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Loading from '../fragments/Loading';
 import { useNavigate } from 'react-router-dom';
 import { Toast } from 'bootstrap';
+import { API_URL } from '../../constants';
 
 const AuthUserForm = () => {
   const [email, setEmail] = useState('');
@@ -24,7 +25,7 @@ const AuthUserForm = () => {
   const authUser = async (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:9000/auth/customer/emailpass', {
+    fetch(`${API_URL}/auth/customer/emailpass`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

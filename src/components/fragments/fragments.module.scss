@@ -164,10 +164,14 @@
     .cart_link{
         margin-right: 30px;
     }
+    .burger_btn{
+        display: none;
+        background: transparent;
+    }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1199.98px) {
         .burger_btn{
-            background: transparent;
+            display: block;
         }
         .navbar_links{
             gap: 0;
@@ -262,6 +266,13 @@ footer{
         }
         .logo_block{
             display: flex;
+            .footer_logo{
+                img{
+                    width: 156px;
+                    height: auto;
+                    display: block;
+                }
+            }
         }
         .working_hours_block{
             p:last-child{

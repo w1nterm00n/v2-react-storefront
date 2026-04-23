@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_URL } from '../../constants';
 
 
 const CreateUserTokenForm = ({ onTokenCreated }) => {
@@ -8,12 +9,11 @@ const CreateUserTokenForm = ({ onTokenCreated }) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const createToken = async (e, email, password) => {
-    console.log("email: ", email, " password: ", password);
     e.preventDefault();
     setErrorMessage('');
 
     try {
-      const response = await fetch("http://localhost:9000/auth/customer/emailpass/register", {
+      const response = await fetch(`${API_URL}/auth/customer/emailpass/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

@@ -7,7 +7,8 @@ import VisualHeader from '../../fragments/VisualHeader';
 import styles from './productPage.module.scss';
 import ProductImages from './ProductImages';
 import RecommendedProducts from './RecommendedProducts';
-import { API_KEY, API_URL, COUNTRY_CODE, TEST_CART_ID } from '../../../constants';
+import { API_KEY, API_URL, REGION_ID } from '../../../constants';
+import { getOrCreateCartId } from '../../../lib/cart';
 
 
 const ProductPage = () => {
@@ -24,7 +25,6 @@ const ProductPage = () => {
             });
             const data = await productRes.json();
             const baseProduct = data.product || [];
-            console.log("Product:", baseProduct);
             setProduct(baseProduct);
           } catch (err) {
             console.error("Failed to load product:", err);
@@ -36,7 +36,8 @@ const ProductPage = () => {
 
       const addItemToCart = async (id_variant) => {
         try {
-          const response = await fetch(`${API_URL}/store/carts/${TEST_CART_ID}/line-items`, {
+          const cartId = await getOrCreateCartId();
+          await fetch(`${API_URL}/store/carts/${cartId}/line-items`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -48,8 +49,6 @@ const ProductPage = () => {
             }),
           });
       
-          const data = await response.json();
-
           window.dispatchEvent(new Event("cartAmountUpdated"));
 
         } catch (err) {
@@ -72,7 +71,7 @@ const ProductPage = () => {
             </div>
             <div className={`col-md-6 ${styles.product_info_text}`}>
                 <h2>{product.title}</h2>
-                <ProductPrice productId={id} regionId="reg_01JRNVQXY95SA2ZY3F0VK3C2YG"/>
+                <ProductPrice productId={id} regionId={REGION_ID}/>
                 <h6 className={styles.subtitle}>{product.subtitle}</h6>
 
                 <button className={styles.btn_default} onClick={() => addItemToCart(product.variants[0].id)}>ADD</button>

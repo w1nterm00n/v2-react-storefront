@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Loading from '../fragments/Loading';
 import { useNavigate } from 'react-router-dom';
 import { Toast } from 'bootstrap';
-import { API_KEY } from '../../constants';
+import { API_KEY, API_URL } from '../../constants';
 
 const CreateUserForm = ({ token }) => {
   const [name, setName] = useState('');
@@ -27,7 +27,7 @@ const CreateUserForm = ({ token }) => {
   
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:9000/store/customers", {
+      const response = await fetch(`${API_URL}/store/customers`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -46,8 +46,7 @@ const CreateUserForm = ({ token }) => {
         throw new Error(`Request failed: ${response.statusText}`);
       }
   
-      const data = await response.json();
-      console.log("User created:", data);
+      await response.json();
       setLoading(true);
       const toastEl = document.getElementById('successToast');
       const toast = new Toast(toastEl);
