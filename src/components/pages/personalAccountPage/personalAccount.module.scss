@@ -1,0 +1,18 @@
+.container{
+    @media (max-width: 768px) {
+        margin: 160px auto !important;
+        .form_wrapper{
+            padding: auto 20px;
+        }
+    }
+    @media (max-width: 480px) {
+        .form_wrapper{
+            padding: auto 20px;
+            .quit_btn{
+                font-size: 16px;
+                line-height: 16px;
+                width: 80% !important;
+            }
+        }
+    }
+}

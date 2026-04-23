@@ -1,0 +1,193 @@
+//fonts
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('/src/assets/fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Forum';
+    src: url('/src/assets/fonts/Forum/Forum-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+//fonts
+
+//filtration panel
+.products_and_filtration{
+    display: flex;
+    flex-direction: row-reverse;
+    //justify-content: space-between;
+    gap: 5%;
+    .filtration_wrapper{
+        width: fit-content;
+        margin-right: 15vw;
+        .filtration{
+            width: fit-content;
+            h5{
+                margin-top: 30px;
+                font-size: 32px;
+            }
+            .price_filter{
+                width: fit-content;
+                h5{
+                    margin-bottom: 10px;
+                }
+                .filtration_line{
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 15px;
+                    .vertical_line{
+                        background-color: #8CBC4F;
+                        width: 2px;
+                        height: 10px;
+                    }
+                    .horizontal_line{
+                        background-color: #8CBC4F;
+                        height: 2px;
+                        width: 100%;
+                    }
+                }
+                .filter_apply_section{
+                    display: flex;
+                    gap: 30px;
+                    color: #2f3327;
+                    font-size: 18px;
+                    .filter_apply_link{
+                        color: #8CBC4F;
+                        text-decoration: underline;
+                        position: relative;
+                    }
+                    .filter_apply_link::after{
+                        content: "";
+                        display: block;
+                        width: 24px;
+                        height: 24px;
+                        background-image: url('/src/assets/img/catalogPage/green-arrow.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        position: absolute;
+                        top: 8px;
+                        right: -30px;
+                    }
+                }
+            }
+            .category_filter{
+                h5{
+                    margin-bottom: 20px;
+                }
+                .filtration_categories{
+                    p{
+                        color: #80ac48; 
+                        font-family: 'Forum';
+                        font-size: 14px;
+                        letter-spacing: .20em;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                        margin-bottom: 8px;
+                    }
+                    .categories_child{
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+            .tags_filter{
+                p{
+                    max-width: 270px;
+                }
+            }
+        }
+    }
+    @media (max-width: 1550px) {
+        width: fit-content;
+        margin: 0 auto;
+        .filtration_wrapper{
+            margin-right: 5vw;
+        }
+        div{
+            .gridCards{
+                max-width: calc(300px * 2 + 40px);
+            }
+        }
+    }
+    @media (max-width: 1024px) {
+        flex-direction: column;
+        .filtration_wrapper{
+            .filtration{
+                .category_filter{
+                    .filtration_categories{
+                        display: inline-block;
+                        margin-right: 20px;
+                    }
+                    .filtration_categories:last-of-type{
+                        vertical-align: top;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 550px) {
+        .filtration_wrapper{
+            .filtration{
+                .price_filter{
+                    margin-left: 30px;
+                }
+                .category_filter{
+                    h5{
+                        margin-left: 30px;
+                    }
+                    .filtration_categories{
+                        margin-left: 30px;
+                        p{
+                            font-size: 14px;
+                        }
+                        .categories_child{
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+//filtration panel
+
+.gridCards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    max-width: calc(300px * 3 + 40px);
+    gap: 20px;
+    padding: 20px;
+    @media (max-width: 1024px) {
+        max-width: calc(300px * 2 + 40px);
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 180px);
+        gap: 30px;
+        padding: 20px;
+    }
+    @media (max-width: 480px) {
+        grid-template-columns: repeat(2, 150px);
+        gap: 10px;
+        padding: 20px;
+    }
+}
+
+//filters panel
+.filters_panel_wrapper{
+    .dropdown_container{
+        margin-left: 52vw;
+        width: fit-content;
+        border-bottom: 1px solid #3d6955;
+    }
+    @media (max-width: 550px) {
+        .dropdown_container{
+            margin-left: 10vw;
+        }
+    }
+}
+//filters panel

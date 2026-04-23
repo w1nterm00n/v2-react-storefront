@@ -1,0 +1,87 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+html, body {
+  overflow-x: hidden;
+}
+
+
+button {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+a {
+  font-weight: 500;
+}
+a:hover {
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* nav */
+.container-fluid{
+  padding: 10px;
+}
+.navLinks{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+/* nav */
+
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* pagination */
+ .paginationCustom {
+  display: flex;
+  border: 1px solid #fff;
+  justify-content: center;
+  padding: 20px;
+}
+/* pagination */
+
+footer.sticky-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.category-description{
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.userForm{
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.footer-category-name{
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(157, 214, 85, 0.3);
+}

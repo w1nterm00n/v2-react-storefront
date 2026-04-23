@@ -1,0 +1,642 @@
+//fonts
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('/src/assets/fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Forum';
+    src: url('/src/assets/fonts/Forum/Forum-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+//fonts
+
+//BANNER 1
+.green_bg {
+    background: linear-gradient(
+        to left,
+        #AFD726 7%,
+        #465806 50%,
+        #425400 100%
+      );
+}
+
+.yellow_bg {
+    background: linear-gradient(
+        to left,
+        #F4D03F 0%,
+        #C39F23 50%,
+        #8E6E1E 100%
+      );
+}
+
+.red_bg {
+    background: linear-gradient(
+        to left,
+        #F25C28 0%,  
+        #B02E1C 50%,    
+        #7A1B12 100% 
+      );
+}
+
+// .article_wrapper{
+//     height: 590px;
+//     opacity: 1;
+//     @media (max-width: 1440px) {
+//         height: 490px;
+//       }
+//     @media (max-width: 1024px) {
+//         height: 440px;
+//       }
+// }
+
+.banner1{
+    display: flex;
+    .nav_dots_wrapper{
+        flex-basis: 15%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        .nav_dots{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-left: 30px;
+            align-items: center;
+            .dot{
+                width: 8px;
+                height: 8px;
+                background-color: white;
+                border-radius: 50%;
+            }
+            .circle {
+                width: 12px;
+                height: 12px;
+                border: 2px solid #ADD975;
+                border-radius: 50%;
+                background-color: transparent;
+            }
+        }
+    }
+    .picture_area_wrapper{
+        flex-basis: 35%;
+        flex-shrink: 0;
+        .picture_area_carousel{
+            position: relative;
+            max-width: 450px;
+            .leaf_right{
+                position: absolute;
+                top: 90px;
+                left: -60px;
+            }
+            .leaf_blur_biggest{
+                position: absolute;
+                z-index: 10;
+                right: -50px;
+                top: 360px;
+            }
+            .carousel_img{
+                position: absolute;
+                top: 50px;
+            }
+            .leaf_blur_small{
+                position: absolute;
+                top: 50px;
+                right: -60px;
+            }
+        }
+    }
+    .description_area{
+        // flex-basis: 50%;
+        flex-shrink: 0;
+        max-width: 25%;
+        color: #FFF;
+        margin-top: 140px;
+        position: relative;
+        .leaf_left{
+            position: absolute;
+            top: -50px;
+            right: -60px;
+        }
+        h2{
+            font-size: 84px;
+            color: #FFF;
+            line-height: 90px;
+            margin-bottom: 20px;
+            font-family: 'Forum';
+            font-weight: 400;
+         }
+         p{
+            font-size: 18px;
+            line-height: 32px;
+            margin-bottom: 40px;
+            font-family: 'Cormorant Garamond';
+         }
+         button{
+            margin-bottom: 100px;
+            padding: 7px 25px;
+            background-color: #FFF;
+            a{
+                letter-spacing: 3px;
+                color: #194A33;
+                font-family: 'Cormorant Garamond';
+            }
+         }
+    }
+    @media (max-width: 1440px) {
+        .picture_area_wrapper{
+            .carousel_img{
+                max-width: 350px;
+            }
+        }
+        .description_area{
+            max-width: 100%;
+            .leaf_left{
+                right: 10px;
+            }
+            h2{
+                font-size: 64px;
+                color: #FFF;
+                line-height: 50px;
+                margin-right: 70px;
+                max-width: 80%;
+             }
+             p{
+                max-width: 80%;
+             }
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .picture_area_wrapper{
+            .carousel_img{
+                max-width: 260px;
+            }
+        }
+        .description_area{
+            max-width: 50%;
+        }
+      }
+
+      @media (max-width: 768px) {
+            flex-direction: column !important;
+            height: 500px !important; //
+            margin-bottom: 200px;
+            .nav_dots_wrapper{
+                order: 1;
+                .nav_dots{
+                    flex-direction: row;
+                }
+            }
+            .picture_area_wrapper{
+                order: 2;
+                
+                .picture_area_carousel{
+                    display: flex;
+                    justify-content: center;
+                    max-width: 100%;
+                    .leaf_right{
+                        top: -30px;
+                        left: 0px;
+                    }
+                    .leaf_blur_biggest{
+                        right: 5px;
+                        top: -120px;
+                        width: 150px;
+                    }
+                    }
+                    .leaf_blur_small{
+                        display: none;
+                    }
+                    .carousel_img{
+                        position: static !important;
+                    }
+            }
+            .description_area{
+                order: 0;
+                margin-top: 60px !important;
+                margin-left: 30px;
+                max-width: 90% !important;
+                button{
+                    margin-bottom: 0 !important;
+                    a{
+                        letter-spacing: 2px;
+                        font-size: 16px;
+                    }
+                 }
+                h2{
+                    max-width: 100% !important;
+                    margin-right: 10px !important;
+                }
+                p{
+                    max-width: 100% !important;
+                }
+                .leaf_left{
+                    display: none;
+                }
+            }
+        }
+}
+//BANNER 1
+
+
+//FEATURED PRODUCTS
+.featured_products_wrapper{
+    overflow: hidden;
+    .featured_products{
+        margin: 0 auto;
+        margin-top: 150px;
+        width: max-content;
+        p{
+            font-family: 'Cormorant Garamond';
+            color: #000;
+            letter-spacing: 2.5px;
+            text-align: center;
+        }
+        h3{
+            text-align: center;
+            font-size: 64px;
+            font-family: 'Forum';
+        }
+        .collection_and_products_wrapper{
+            width: 100vw;
+            .collection_filter_wrapper{
+                max-width: 600px;
+                display: flex;
+                margin: 50px auto;
+                justify-content: space-between;
+                .collection_filter_item{
+                    width: 34%;
+                    display: flex;
+                    justify-content: center;
+                    padding: 6px 0;
+                    background-color: rgba(157, 214, 85, 0.15);
+                    a{
+                        font-family: 'Cormorant Garamond';
+                        letter-spacing: 2px;
+                        color: #194A33;
+                        font-size: 17px;
+                    }
+                }
+                .chosen_collection{
+                    a{
+                        color: #fff;
+                    }
+                    background-color: #194A33;
+                }
+            }
+            .grid_cards_wrapper{
+                overflow-x: hidden;
+                .grid_cards{
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(286px, max-content));
+                    gap: 50px;
+                    justify-content: center;
+                }
+            }
+        }
+        .link{
+            margin: 100px auto 50px;
+            display: flex;
+            justify-content: center;
+            a{
+                font-family: 'Cormorant Garamond';
+                letter-spacing: 1.7px;
+                color: #000000;
+                font-size: 18px;
+                text-decoration: underline;
+            }
+            img{
+                margin-left: 10px;
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        .featured_products{
+            width: 100% !important; 
+            h3{
+                font-size: 54px;
+            }
+            .collection_and_products_wrapper{
+                .collection_filter_wrapper{
+                    width: 95%;
+                    margin: 50px auto 50px auto !important;
+                    .collection_filter_item{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        a{
+                            font-size: 16px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//FEATURED PRODUCTS
+
+//WHY CHOOSE US
+.whyChooseUsWrapper{
+    margin-top: 250px;
+    margin-bottom: 150px;
+    .whyChooseUs{
+        .WhyChooseUsHeading{
+            font-size: 48px;
+            width: 55vw;
+            margin: 0 auto 70px auto;
+            text-align: center;
+            color: #194A33;
+            position: relative;
+            .plantImg{
+                position: absolute;
+                top: -120px;
+                left: 45%;
+            }
+            .planetImg{
+                position: absolute;
+                top: 20px;
+                right: -15%;
+            }
+            .packageImg{
+                position: absolute;
+                top: -15%;
+                left: -20%;
+            }
+            .logoImage{
+                margin-bottom: 12px;
+                margin-right: 10px;
+                height: 52px;
+            }
+        }
+        .WhyChooseUsCards{
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            width: min-content;
+            margin: 0 auto;
+            align-items: baseline;
+            .WhyChooseUsCard{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                img{
+                    max-width: 412px;
+                    max-height: 388px;
+                }
+                .heading{
+                    font-size: 36px;
+                    color: #194A33;
+                }
+                .description{
+                    font-size: 20px;
+                    text-align: center;
+                    color: #194A33;
+                    font-family: 'Cormorant Garamond';
+                    width: 100%;
+                }
+            }
+        }
+    }
+    @media (max-width: 1440px) {
+        margin-top: 100px;
+        .whyChooseUs{
+            .WhyChooseUsCards{
+                .WhyChooseUsCard{
+                    img{
+                        max-width: 360px;
+                    }
+                }
+            }
+        }
+      }
+      @media (max-width: 1280px) {
+        margin-top: 40px !important;
+        .whyChooseUs{
+            .WhyChooseUsCards{
+                .WhyChooseUsCard{
+                    img{
+                        max-width: 300px;
+                    }
+                }
+            }
+        }
+      }
+      @media (max-width: 1024px) {
+        .whyChooseUs{
+            .WhyChooseUsHeading{
+                font-size: 32px;
+                width: 80vw;
+                .logoImage{
+                    height: 40px;
+                }
+            }
+            .WhyChooseUsCards{
+                .WhyChooseUsCard{
+                    img{
+                        max-width: 260px;
+                    }
+                }
+            }
+        }
+      }
+      @media (max-width: 900px) {
+        .whyChooseUs{
+            .WhyChooseUsCards{
+                flex-direction: column;
+            }
+        }
+      }
+      @media (max-width: 768px) {
+        .whyChooseUs{
+            .WhyChooseUsHeading{
+                .plantImg{
+                    display: none;
+                }
+                .planetImg{
+                    display: none;
+                }
+                .packageImg{
+                    position: absolute;
+                    top: -15%;
+                    left: -20%;
+                }
+            }
+            .WhyChooseUsCards{
+                .WhyChooseUsCard{
+                    img{
+                    }
+                }
+            }
+        }
+      }
+}
+
+  
+//WHY CHOOSE US
+
+//CUSTOMERS REVIEW
+.customers_review_wrapper{
+    position: relative;
+    margin-bottom: 200px;
+    .left_leaf{
+        position: absolute;
+        top: -180px;
+        left: 150px;
+    }
+    .customers_review_heading{
+        font-family: 'Forum';
+        color: #000;
+        text-transform: uppercase;
+        font-size: 18px;
+        letter-spacing: 2.5px;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .carousel_wrapper{
+        .stars_container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .text_and_arrows_container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            .arrow_btn{
+                width: 100px;
+                height: 100px;
+                background: #f7f7f7;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .arrow{
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    border-left: 3px solid #17423b;
+                    border-bottom: 3px solid #17423b;
+
+                }
+                [data-direction="left"] {
+                    transform: rotate(45deg); 
+                }
+                [data-direction="right"] {
+                    transform: rotate(225deg); 
+                }
+            }
+            .text_wrapper{
+                color: #194A33;
+                line-height: 48px;
+                font-size: 36px;
+                max-width: 50%;
+                text-align: center;
+                margin-bottom: 40px;
+            }
+        }
+        .person_wrapper{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            .person_photo{
+                margin-bottom: 20px;
+                img{
+                    width: 88px;
+                }
+            }
+            .person_name{
+                color: #86938D;
+                font-size: 28px;
+            }
+            .right_leaf{
+                position: absolute;
+                right: 310px;
+                top: 0;
+            }
+        }
+    }
+
+    @media (max-width: 1021px) {
+        margin-bottom: 100px;
+            .carousel_wrapper{
+                .person_wrapper{
+                    .right_leaf{
+                        right: 10px;
+                    }
+                }
+                .text_and_arrows_container{
+                    p{
+                        font-size: 24px !important;
+                    }
+                    .arrow_btn{
+                        width: 50px;
+                        height: 50px;
+                        background: #f7f7f7;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        .arrow{
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            border-left: 3px solid #17423b;
+                            border-bottom: 3px solid #17423b;
+        
+                        }
+                    }
+                }
+            }
+    }
+
+    @media (max-width: 768px) {
+            .carousel_wrapper{
+                .person_wrapper{
+                    .right_leaf{
+                        width: 120px;
+                    }
+                }
+                .text_and_arrows_container{
+                    gap: 5px;
+                    p{
+                        line-height: 30px !important;
+                        font-size: 20px !important;
+                    }
+                    .arrow_btn{
+                        width: 50px;
+                        height: 50px;
+                        background: #f7f7f7;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        .arrow{
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            border-left: 3px solid #17423b;
+                            border-bottom: 3px solid #17423b;
+        
+                        }
+                    }
+                }
+            }
+    }
+}
+//CUSTOMERS REVIEW
+
+

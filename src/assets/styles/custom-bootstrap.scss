@@ -1,0 +1,30 @@
+$primary: #194A33;
+$secondary: rgba(157, 214, 85, 0.3);
+$light: #F4F6F8;
+$dark: #45595B;
+
+$font-family-base: 'Cormorant Garamond';
+$headings-font-family: 'Forum';
+$font-size-base: 1.2rem;
+
+$body-color: #747d88;
+
+$headings-color: $dark;
+
+$headings-font-weight: 600;
+
+$display-font-weight: 800;
+
+$enable-responsive-font-sizes: true;
+
+$border-radius: 10px;
+
+$border-radius-sm: $border-radius;
+
+$border-radius-lg: $border-radius;
+
+$link-decoration: none;
+
+$enable-negative-margins: true;
+
+@import "bootstrap/scss/bootstrap";

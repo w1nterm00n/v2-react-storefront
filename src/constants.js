@@ -1,0 +1,7 @@
+export const API_KEY = "pk_03343001037bbe734ff63d70aae9a7797b5b381f248cc85fad3404dec1675847";
+export const API_URL = "http://localhost:9000";
+export const COUNTRY_CODE = "ru";
+export const REGION_ID = "reg_01JRNVQXY95SA2ZY3F0VK3C2YG";
+export const TEST_CART_ID = "cart_01JRX1S2F943KRCYQHKZ7TSNGB";
+export const BESTSELLERS_ID = "pcol_01JVPRWN7GWSYJTXRHYCZS36FM";
+export const SALES_COLLECTION_ID = "pcol_01JS4N6GZZ7ZA6FWMY757C0EGR";
